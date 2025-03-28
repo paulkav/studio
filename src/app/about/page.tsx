@@ -16,7 +16,7 @@ export default function AboutPage() {
           </p>
           <p>
             Located in the heart of the city, our studio is designed to be your creative haven. 
-            Whether you're just starting your podcast journey or are a seasoned professional, 
+            Whether you&apos;re just starting your podcast journey or are a seasoned professional, 
             we have the equipment and expertise to support your vision.
           </p>
         </div>

@@ -13,7 +13,7 @@ export default function ContactPage() {
         const form = document.querySelector('form') as HTMLFormElement;
         form?.reset();
         alert('Message sent successfully!');
-      } catch (error) {
+      } catch {
         alert('Failed to send message. Please try again.');
       }
     });

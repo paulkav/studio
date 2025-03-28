@@ -39,12 +39,11 @@ export async function submitForm(data: FormData) {
 
     console.log('Email sent successfully:', result);
     return;
-  } catch (error: any) {
-    console.error('Error details:', {
-      message: error.message,
-      response: error.response,
-      stack: error.stack
-    });
-    throw new Error(error.message || 'Failed to send email');
+  } catch (error: unknown) {
+    console.error('Error details:', error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Failed to send email');
   }
 }
