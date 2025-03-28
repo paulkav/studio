@@ -1,18 +1,9 @@
-'use server';
-
-import { Resend } from 'resend';
+import { NextResponse } from 'next/server';
+import resend from '@/lib/resend';
 
 export async function POST() {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
     console.log('Testing Resend setup...');
-    console.log('API Key exists:', !!apiKey);
-    
-    if (!apiKey) {
-      throw new Error('RESEND_API_KEY is not configured');
-    }
-
-    const resend = new Resend(apiKey);
 
     const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
