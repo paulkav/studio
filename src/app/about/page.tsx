@@ -11,7 +11,7 @@ export default function AboutPage() {
           </p>
           <p>
             Our team consists of experienced audio engineers and podcast producers who understand 
-            the technical and creative aspects of podcast production. We're here to help you bring 
+            the technical and creative aspects of podcast production. We&apos;re here to help you bring 
             your ideas to life with crystal-clear audio quality.
           </p>
           <p>
