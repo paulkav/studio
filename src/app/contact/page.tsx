@@ -5,16 +5,18 @@ import { submitForm } from '../actions';
 
 export default function ContactPage() {
   const [isPending, startTransition] = useTransition();
-
-  const handleSubmit = async (formData: FormData) => {
+  async function clientAction(formData: FormData) {
     startTransition(async () => {
       try {
-        await submitForm(formData);
+        console.log('Client - Starting form submission');
+        const result = await submitForm(formData);
+        console.log('Client - Form submission result:', result);
         const form = document.querySelector('form') as HTMLFormElement;
         form?.reset();
         alert('Message sent successfully!');
-      } catch {
-        alert('Failed to send message. Please try again.');
+      } catch (error) {
+        console.error('Client - Form submission error:', error);
+        alert(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
       }
     });
   };
@@ -24,7 +26,7 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-12">Contact Us</h1>
         <div className="bg-black/50 backdrop-blur-sm p-8 rounded-lg border border-zinc-800">
-          <form action={handleSubmit} className="space-y-6">
+          <form action={clientAction} className="space-y-6">
             {isPending && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
                 <div className="text-white">Sending...</div>
