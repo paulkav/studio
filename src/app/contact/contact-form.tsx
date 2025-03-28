@@ -9,15 +9,19 @@ export default function ContactForm() {
   async function clientAction(formData: FormData) {
     startTransition(async () => {
       try {
-        console.log('Client - Starting form submission');
         const result = await submitForm(formData);
-        console.log('Client - Form submission result:', result);
-        const form = document.querySelector('form') as HTMLFormElement;
-        form?.reset();
-        alert('Message sent successfully!');
+        if (result.error) {
+          alert(result.error);
+          return;
+        }
+        if (result.success) {
+          const form = document.querySelector('form') as HTMLFormElement;
+          form?.reset();
+          alert('Message sent successfully!');
+        }
       } catch (error) {
-        console.error('Client - Form submission error:', error);
-        alert(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+        console.error('Form submission error:', error);
+        alert('Failed to send message. Please try again.');
       }
     });
   }
